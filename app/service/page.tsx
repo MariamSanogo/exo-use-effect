@@ -1,5 +1,5 @@
-function page (){
-    return <div>service</div>
+function page() {
+  return <div>service</div>;
 }
 
-export default  page
+export default page;
