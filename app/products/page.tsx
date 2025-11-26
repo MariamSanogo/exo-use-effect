@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const PRODUCTS_LIST = [
+export const PRODUCTS_LIST = [
   {
     id: 1,
     name: "Ordinateur Portable Lenovo ThinkPad X1",

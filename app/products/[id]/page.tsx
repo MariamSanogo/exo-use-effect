@@ -1,3 +1,5 @@
+import { PRODUCTS_LIST } from "@/app/products/page";
+
 export default async function page({ params }: any) {
   //La page va retourner des donnees qui ne sont peut etre pas disponible au chargement => async
 
@@ -9,6 +11,20 @@ export default async function page({ params }: any) {
   console.log(await params);
   // {id: "12", name:"Yao" }
 
-  //{ id: '12' }
-  return <div>page</div>;
+  //{ id: '12' } => 12 => '12'
+  const { id } = await params;
+
+  const product = PRODUCTS_LIST.find((product) => product.id === Number(id));
+
+  if (!product) {
+    return <div>Produit introuvable</div>;
+  }
+  return (
+    <div>
+      Nom : {product.name} <br />
+      Description : {product.description}
+      <br />
+      Prix de vente : {product.salePrice}
+    </div>
+  );
 }
