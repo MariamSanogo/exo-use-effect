@@ -1,3 +1,5 @@
+
+import Link from "next/link";
 export const article = [
   {
     title: "L’intelligence artificielle au service du quotidien",
@@ -29,9 +31,14 @@ function page (){
             <div key={item.slug} className="p-4 rounded-lg bg-gray-50">
               <div className="font-bold">{item.prix}</div>
               <div>{item.detail}</div>
+              <div className="bg-red-600 rounded-lg p-2">
+                <Link href = {`/article/${item.slug}`}>voir mes article</Link>
+              </div>
             </div>
           ))}
         </div>
+
+        <div></div>
       </div>
     );
 }
