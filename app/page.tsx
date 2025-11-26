@@ -1,96 +1,73 @@
 "use client";
 
+import { useState } from "react";
 
-
-
-import React, { useState } from "react";
-
-
-
-
-
-
-
-function Somme (){
+function Somme() {
   const numbers = [2, 5, 8, 3, 9];
-  const sum =  numbers.reduce((acc,n) => acc + n,0)
+  const sum = numbers.reduce((acc, n) => acc + n, 0);
   const products = numbers.reduce((acc, n) => acc * n, 1);
-  const max = numbers.reduce((acc, n) => (n > acc? n:acc), numbers[0]);
-  console.log(sum)
-  console.log(products)
-  console.log(max)
- 
+  const max = numbers.reduce((acc, n) => (n > acc ? n : acc), numbers[0]);
+  console.log(sum);
+  console.log(products);
+  console.log(max);
 }
 
-Somme()
+Somme();
 
-
-
-function Slugp(){
+function Slugp() {
   const posts = [
     { title: "Introduction à React" },
     { title: "Découvrir Next.js" },
     { title: "Apprendre TypeScript" },
   ];
- const parcour = posts.map((post) => ({
-  title:post.title,
-  slug: post.title
-     .toLowerCase()
-     .replace(/\s+/g, "-")
-     .normalize("NFD")
-     .replace(/[\u0300-\u036f]/g, "")
- }));
+  const parcour = posts.map((post) => ({
+    title: post.title,
+    slug: post.title
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, ""),
+  }));
 
- console.log(parcour);
-
+  console.log(parcour);
 }
 
-Slugp()
+Slugp();
 
-
-function Tableaumul () {
+function Tableaumul() {
   const numbers = [1, 2, 3, 4];
-  const tableaumembers = numbers.map(number => number *2)
+  const tableaumembers = numbers.map((number) => number * 2);
 
-  console.log (tableaumembers)
+  console.log(tableaumembers);
 }
 
-Tableaumul ()
+Tableaumul();
 
-function Promo(){
- const articles = [
-   { title: "Chaussures", promo: true },
-   { title: "Chemise", promo: false },
-   { title: "Pantalon", promo: true },
- ];
+function Promo() {
+  const articles = [
+    { title: "Chaussures", promo: true },
+    { title: "Chemise", promo: false },
+    { title: "Pantalon", promo: true },
+  ];
 
- 
- const articlesEnPromo = articles.filter((article) => article.promo);
+  const articlesEnPromo = articles.filter((article) => article.promo);
 
- console.log(articlesEnPromo);
-
-
+  console.log(articlesEnPromo);
 }
 
-Promo()
-
+Promo();
 
 function Notes() {
   const notes = [12, 5, 17, 3, 14];
 
- 
   const notesValides = notes.filter((note) => note >= 10);
 
-  
-  console.log(notesValides); 
+  console.log(notesValides);
 
-  
   return notesValides;
 }
 
-
 Notes();
-
 
 function ProduitR() {
   const products = [
@@ -99,80 +76,83 @@ function ProduitR() {
     { name: "Lait", stock: 25 },
   ];
 
-  
   const outOfStockProduct = products.find((p) => p.stock === 0);
 
- 
   console.log(outOfStockProduct);
 
-  
   return outOfStockProduct;
 }
 
-
 ProduitR();
 
-
-function Users(){
+function Users() {
   const users = [
     { id: 1, name: "Awa", email: "awa@example.com" },
     { id: 2, name: "Koffi", email: "koffi@example.com" },
     { id: 3, name: "Sarah", email: "sarah@example.com" },
   ];
-  const emailfind = users.find(u=>u.email==="koffi@example.com")
-return(
-  <div>
-    {
-      emailfind? (
+  const emailfind = users.find((u) => u.email === "koffi@example.com");
+  return (
+    <div>
+      {emailfind ? (
         <div>
           <p>id:{emailfind.id}</p>
           <p>nom:{emailfind.name}</p>
           <p>email: {emailfind.email}</p>
         </div>
-      ):(
+      ) : (
         <p>utilisateurs non trouve</p>
-      )
-    }
-  </div>
-)
- 
+      )}
+    </div>
+  );
 }
 
-function Statue({name,isligne}:{name:string, isligne ?:boolean}){
-   return(
+function Statue({ name, isligne }: { name: string; isligne?: boolean }) {
+  return (
     <div>
-      <p> bonjour {name} {isligne ? "vous etes en ligne" : "vous n'est pas ligne" }</p>
+      <p>
+        {" "}
+        bonjour {name} {isligne ? "vous etes en ligne" : "vous n'est pas ligne"}
+      </p>
     </div>
-   )
+  );
 }
 
-
-function Statue2 ({name, ligne}:{name:string,ligne:boolean}){
-  
- if(ligne){
-  return(
-    <div>
-      <p>bonjour{name},{"vous etes en ligne"}</p>
-    </div>
-  )
-
- }else{
-  return(
-    <div>
-      <p>bonjour {name},{ "vous n'est pas en ligne"}</p>
-    </div>
-  )
- }
+function Statue2({ name, ligne }: { name: string; ligne: boolean }) {
+  if (ligne) {
+    return (
+      <div>
+        <p>
+          bonjour{name},{"vous etes en ligne"}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>
+          bonjour {name},{"vous n'est pas en ligne"}
+        </p>
+      </div>
+    );
+  }
 }
 
-
-
-function WelcomeMessage({name,isNumber}:{name:string,isNumber?:boolean}){
-  return(
+function WelcomeMessage({
+  name,
+  isNumber,
+}: {
+  name: string;
+  isNumber?: boolean;
+}) {
+  return (
     <div>
-      <p>bonjour {name},{isNumber ? "vous etes un membre" : "vous n'est pas un membre"} </p>
+      <p>
+        bonjour {name},
+        {isNumber ? "vous etes un membre" : "vous n'est pas un membre"}{" "}
+      </p>
     </div>
-  )
+  );
 }
 
 function Funmessage({ name }: { name: string }) {
@@ -192,7 +172,6 @@ function Funmessage({ name }: { name: string }) {
   );
 }
 
-
 function AgeComp({ datenaissance }: { datenaissance: number }) {
   const age = 2025 - datenaissance;
   return <div>Vous avez {age} ans</div>;
@@ -208,9 +187,6 @@ function Usecard({ name, age }: { name: string; age?: number }) {
   );
 }
 
-
-
-
 function Counter({ count }: { count: number }) {
   const [Counte, setCounte] = useState<number>(count);
 
@@ -221,14 +197,13 @@ function Counter({ count }: { count: number }) {
       <div>
         <input
           type="number"
-          value={Counte} 
+          value={Counte}
           onChange={(e) => setCounte(Number(e.target.value))}
         />
       </div>
 
       <div style={{ marginTop: "10px" }}>
         <button onClick={() => setCounte(Counte + 1)}>+1</button>{" "}
-        
         <button onClick={() => setCounte(Counte - 1)}>-1</button>
       </div>
     </div>
@@ -302,7 +277,6 @@ export default function Home() {
       <Statue2 name="Paul" ligne={true} />
       <Statue2 name="Mariam" ligne={false} />
       <Users />
-     
     </div>
   );
 }
