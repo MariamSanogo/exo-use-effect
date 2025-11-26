@@ -1,5 +1,13 @@
+import Link from "next/link";
 function page() {
-  return <div> page</div>;
+  return (
+    <div className="p-2">
+      <p>contact</p>
+      <div>
+        <Link href={"/service"}></Link>
+      </div>
+    </div>
+  );
 }
 
 export default page;
