@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const PRODUCTS_LIST = [
   {
     id: 1,
@@ -61,6 +63,10 @@ function page() {
           <div key={product.id} className="p-4 rounded-lg bg-gray-50">
             <div className="font-bold">{product.name}</div>
             <div>{product.description}</div>
+
+            <div className="bg-amber-50 p-2 rounded-lg">
+              <Link href={`/products/${product.id}`}>Voir le produit</Link>
+            </div>
           </div>
         ))}
       </div>
