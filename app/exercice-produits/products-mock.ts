@@ -100,5 +100,8 @@ export const EXO_PRODUCTS_LIST = [
   },
 ];
 
-
-
+export function getCategories() {
+  return Array.from(
+    new Set(EXO_PRODUCTS_LIST.map((product) => product.category))
+  );
+}

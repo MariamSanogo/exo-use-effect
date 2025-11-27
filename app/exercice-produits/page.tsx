@@ -1,71 +1,45 @@
 import Link from "next/link";
-import { EXO_PRODUCTS_LIST } from "./products-mock";
+import { EXO_PRODUCTS_LIST, getCategories } from "./products-mock";
 
-function page() {
-  return (
-    <div>
-      <div className="container mx-auto p-4 grid grid-cols-3 gap-4">
-        {EXO_PRODUCTS_LIST.map((product) => (
-          <Link
-            href={`/exercice-produits/${product.slug}`}
-            className="bg-gray-100 p-4"
-            key={product.slug}
-          >
-            <div
-              className="w-full h-64 bg-center bg-cover bg-no-repeat rounded-lg "
-              style={{
-                backgroundImage: `url(${product.image})`,
-              }}
-              role="img"
-              aria-label={product.title}
-            />
-
-            <div className="font-bold text-2xl my-2">{product.title}</div>
-            <div>{product.description}</div>
-            <div>{product.price}</div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-
+interface PageProps {
+  searchParams: Promise<{ category?: string }>;
 }
 
+export default async function Page({ searchParams }: PageProps) {
+  // On attend la résolution de searchParams
+  const params = await searchParams;
+  const category = params?.category;
 
- function ProductsPage({
-  searchParams,
-}: {
-  searchParams?: { category?: string };
-}) {
-  const category = searchParams?.category;
-
-  
   const filteredProducts = category
     ? EXO_PRODUCTS_LIST.filter((product) => product.category === category)
     : EXO_PRODUCTS_LIST;
 
-  
-  const categories = getCategory();
+  const categories = getCategories();
 
   return (
     <div>
       <h2 className="text-xl font-bold mb-3">Liste des produits</h2>
 
-      {}
+      {/* FILTRES */}
       <div className="flex gap-3 mb-5">
         <Link
           href="/exercice-produits"
-          className="px-3 py-1 bg-gray-300 rounded"
+          className={`px-3 py-1 rounded ${
+            !category ? "bg-blue-500 text-white" : "bg-gray-300"
+          }`}
         >
           Tous
         </Link>
-        {categories.map((Slug) => (
+
+        {categories.map((cat) => (
           <Link
+            key={cat}
             href={`/exercice-produits?category=${encodeURIComponent(cat)}`}
-            key={Slug}
-            className="px-3 py-1 bg-gray-300 rounded"
+            className={`px-3 py-1 rounded ${
+              category === cat ? "bg-blue-500 text-white" : "bg-gray-300"
+            }`}
           >
-            {Slug}
+            {cat}
           </Link>
         ))}
       </div>
@@ -76,7 +50,7 @@ function page() {
           <Link
             href={`/exercice-produits/${product.slug}`}
             key={product.slug}
-            className="border p-4 rounded shadow hover:bg-gray-50"
+            className="border p-4 rounded shadow hover:bg-gray-50 transition"
           >
             <img
               src={product.image}
@@ -92,5 +66,3 @@ function page() {
     </div>
   );
 }
-
-export default page;
