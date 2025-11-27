@@ -15,6 +15,7 @@ export default async function page({ params }: any) {
   const { id } = await params;
 
   const product = PRODUCTS_LIST.find((product) => product.id === Number(id));
+    
 
   if (!product) {
     return <div>Produit introuvable</div>;
