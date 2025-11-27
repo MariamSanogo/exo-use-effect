@@ -15,6 +15,9 @@ async function page({ params }: any) {
       </div>
     </div>
   );
+
+
+  
 }
 
 export default page;

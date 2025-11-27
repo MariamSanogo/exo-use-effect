@@ -99,3 +99,6 @@ export const EXO_PRODUCTS_LIST = [
     price: 29.99,
   },
 ];
+
+
+

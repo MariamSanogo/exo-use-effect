@@ -1,19 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 
-export default function Home() {
-  return (
-    <div>
-      <h2 className="text-xl mb-3">Bienvenue dans Store Explorer</h2>
-      <Link href="/products" className="text-blue-600 underline">
-        Voir tous les produits
-      </Link>
-    </div>
-  );
-}
+
+
 
 function Somme() {
   const numbers = [2, 5, 8, 3, 9];
