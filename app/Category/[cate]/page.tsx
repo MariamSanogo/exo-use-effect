@@ -1,25 +1,24 @@
-import { PRODUCTS_LIST } from "@/app/data/products";
+import Link from "next/link";
+import { PRODUCTS_LIST } from "@/app/Category/cate";
 
-export default function ProductDetail({ params }) {
-  const id = Number(params.id);
+export default function ProductDetail({ params }: any) {
+  const productId = Number(params.id);
 
-  const product = PRODUCTS_LIST.find((p) => p.id === id);
+  const product = PRODUCTS_LIST.find((p) => p.id === productId);
 
-  if (!product) return <div>Produit introuvable</div>;
+  if (!product) {
+    return <h2>Produit introuvable</h2>;
+  }
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-3">{product.name}</h1>
-
-      <p className="text-lg">{product.price} FCFA</p>
-      <p className="mt-2">{product.description}</p>
-
-      <a
-        href="/products"
-        className="inline-block mt-6 bg-gray-700 text-white px-4 py-2 rounded"
-      >
+      <Link href="/products" className="text-blue-600 underline mb-4 block">
         ← Back
-      </a>
+      </Link>
+
+      <h1 className="text-2xl font-bold">{product.name}</h1>
+      <p className="mt-2 text-gray-700">Prix : {product.price} €</p>
+      <p className="text-gray-500 text-sm">Catégorie : {product.category}</p>
     </div>
   );
 }
